@@ -15,12 +15,23 @@
 
 #include"head.h"
 
-int removeElement()
+using namespace std;
+
+int removeElement(const vector<int>& vec,int target)
 {
-    
+    int count = 0;
+    for(int i = 0;i<vec.size();i++)
+    {
+        if(vec[i] == target)
+        {
+            count++;
+        }
+    }
+    return vec.size()-count;
 }
 
 int main()
 {
-    vector<int> vec;
+    vector<int> vec = {1, 2, 3, 4, 5, 6, 8, 9};
+    cout<<removeElement(vec,1)<<endl;
 }
