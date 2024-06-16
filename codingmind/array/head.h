@@ -1,6 +1,10 @@
 #include<iostream>
 #include<vector>
-
+#include<algorithm>
+#include<map>
+#include<list>
+#include<cmath>
+#include<climits>
 
 template <class T>
 void printVec(std::vector<T> vec)
