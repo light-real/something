@@ -30,11 +30,30 @@ int minSubArrayLen(const std::vector<int> &vec, int s) // 暴力解法
     return result == INT_MAX ? 0 : result;
 }
 
+int minSubArrayLen_window(const std::vector<int> &vec,int s) //滑动窗口
+{
+    int result = INT_MAX; //最终的结果 即最小数组长度
+    int i = 0; //起始位置
+    int sum = 0;  //当前累加的总和
+    int sublength = 0; //记录每一个当前满足条件的长度
+    for(int j = 0;j<vec.size();j++)
+    {
+        sum += vec[j];
+        while(sum >= s)
+        {
+            sublength = (j-i+1);
+            result  = std::min(result,sublength);
+            sum -= vec[i++];
+        }
+    }
+    return result == INT_MAX ? 0 : result;
+}
+
 int main()
 {
     int s = 7;
     std::vector<int> vec = {2, 3, 1, 2, 4, 3};
-    int ans = minSubArrayLen(vec,s);
+    int ans = minSubArrayLen_window(vec,s);
     std::cout<<ans<<std::endl;
     return 0;
 }
