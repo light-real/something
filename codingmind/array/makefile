@@ -1,6 +1,6 @@
 c11 = -std=c++11
 
-all:search removeElement sortedSquares minSubArrayLen
+all:search removeElement sortedSquares minSubArrayLen generateMatrix
 
 search:search.cpp
 	g++ -o search search.cpp
@@ -13,6 +13,9 @@ sortedSquares:sortedSquares.cpp head.h
 
 minSubArrayLen:minSubArrayLen.cpp
 	g++ $(c11) -o minSubArrayLen minSubArrayLen.cpp -g
+
+generateMatrix:generateMatrix.cpp
+	g++ $(c11) -o generateMatrix generateMatrix.cpp -g
 clean:
-	rm -rf search removeElement minSubArrayLen sortedSquares
+	rm -rf search removeElement minSubArrayLen sortedSquares generateMatrix
 
