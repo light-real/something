@@ -8,7 +8,7 @@ TARGET = reverseString
 #源文件
 SRCS = head.hpp reverseString.cpp
 
-all:$(TARGET) reverseStr replaceNumber
+all:$(TARGET) reverseStr replaceNumber removeExtraSpaces
 
 $(TARGET):$(SRCS)
 	$(CXX) $(CXXFLAGS) -o reverseString reverseString.cpp
@@ -18,6 +18,9 @@ reverseStr:reverseStr.cpp
 
 replaceNumber:replaceNumber.cpp
 	g++ $(CXXFLAGS) -o replaceNumber replaceNumber.cpp
+
+removeExtraSpaces:removeExtraSpaces.cpp
+	g++ $(CXXFLAGS) -o removeExtraSpaces removeExtraSpaces.cpp
 #清理规则
 clean:
-	$(del) $(TARGET) reverseStr replaceNumber
+	$(del) $(TARGET) reverseStr replaceNumber removeExtraSpaces
