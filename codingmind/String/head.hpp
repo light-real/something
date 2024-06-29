@@ -12,3 +12,12 @@ void reverseString(std::string &str, int start, int end)
         std::swap(str[i], str[j]);
     }
 }
+
+void printVec(const std::vector<int>& vec)
+{
+    for(auto i:vec)
+    {
+        std::cout<<i<<" ";
+    }
+    std::cout<<std::endl;
+}
