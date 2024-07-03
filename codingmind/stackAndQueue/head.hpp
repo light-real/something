@@ -5,13 +5,15 @@
 #include <queue>
 #include <algorithm>
 #include <sstream>
+#include <limits.h>
+#include <deque>
 
 template <class T>
-void printVec(const std::vector<T>& vec)
+void printVec(const std::vector<T> &vec)
 {
-    for(auto u : vec)
+    for (auto u : vec)
     {
-        std::cout<<u<<" ";
+        std::cout << u << " ";
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
 }

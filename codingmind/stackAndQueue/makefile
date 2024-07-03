@@ -1,6 +1,6 @@
 c11 = -std=c++11
 
-all:useStackToQueue useQueueToStack isValid removeDuplicates evalRPN
+all:useStackToQueue useQueueToStack isValid removeDuplicates evalRPN maxSlidingWindow
 
 useStackToQueue:useStackToQueue.cpp
 	g++ $(c11) -o useStackToQueue useStackToQueue.cpp
@@ -17,5 +17,8 @@ removeDuplicates:removeDuplicates.cpp
 evalRPN:evalRPN.cpp
 	g++ $(c11) -o evalRPN evalRPN.cpp
 
+maxSlidingWindow:maxSlidingWindow.cpp
+	g++ $(c11) -o maxSlidingWindow maxSlidingWindow.cpp
+
 clean:
-	rm -f useStackToQueue useQueueToStack isValid removeDuplicates evalRPN
+	rm -f useStackToQueue useQueueToStack isValid removeDuplicates evalRPN maxSlidingWindow
