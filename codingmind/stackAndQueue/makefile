@@ -1,6 +1,6 @@
 c11 = -std=c++11
 
-all:useStackToQueue useQueueToStack isValid
+all:useStackToQueue useQueueToStack isValid removeDuplicates evalRPN
 
 useStackToQueue:useStackToQueue.cpp
 	g++ $(c11) -o useStackToQueue useStackToQueue.cpp
@@ -11,5 +11,11 @@ useQueueToStack:useQueueToStack.cpp
 isValid:isValid.cpp
 	g++ $(c11) -o isValid isValid.cpp
 
+removeDuplicates:removeDuplicates.cpp
+	g++ $(c11) -o removeDuplicates removeDuplicates.cpp
+
+evalRPN:evalRPN.cpp
+	g++ $(c11) -o evalRPN evalRPN.cpp
+
 clean:
-	rm -f useStackToQueue useQueueToStack
+	rm -f useStackToQueue useQueueToStack isValid removeDuplicates evalRPN
