@@ -3,7 +3,7 @@
 /*
 自定义一个双端队列
 push(value)
-    如果vaulea值大于队列.front() 那么弹出队头元素 直至value小于队头元素
+    如果vaulea值大于队列的入口元素 那么弹出入口元素 直至value小于队头元素
 
 pop(value)
     如果value == 队列.front() 那么弹出队头元素 否则什么也不做
