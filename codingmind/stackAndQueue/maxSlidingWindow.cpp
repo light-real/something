@@ -1,63 +1,72 @@
 #include "head.hpp"
 
 /*
-¸øÄãÒ»¸öÕûÊıÊı×é nums£¬ÓĞÒ»¸ö´óĞ¡Îª k µÄ»¬¶¯´°¿Ú´ÓÊı×éµÄ×î×ó²àÒÆ¶¯µ½Êı×éµÄ×îÓÒ²à¡£
-ÄãÖ»¿ÉÒÔ¿´µ½ÔÚ»¬¶¯´°¿ÚÄÚµÄ k ¸öÊı×Ö¡£»¬¶¯´°¿ÚÃ¿´ÎÖ»ÏòÓÒÒÆ¶¯Ò»Î»¡£
-·µ»Ø »¬¶¯´°¿ÚÖĞµÄ×î´óÖµ ¡£
+è‡ªå®šä¹‰ä¸€ä¸ªåŒç«¯é˜Ÿåˆ—
+push(value)
+    å¦‚æœvauleaå€¼å¤§äºé˜Ÿåˆ—.front() é‚£ä¹ˆå¼¹å‡ºé˜Ÿå¤´å…ƒç´  ç›´è‡³valueå°äºé˜Ÿå¤´å…ƒç´ 
 
-Ê¾Àı 1£º
-ÊäÈë£ºnums = [1,3,-1,-3,5,3,6,7], k = 3
-Êä³ö£º[3,3,5,5,6,7]
+pop(value)
+    å¦‚æœvalue == é˜Ÿåˆ—.front() é‚£ä¹ˆå¼¹å‡ºé˜Ÿå¤´å…ƒç´  å¦åˆ™ä»€ä¹ˆä¹Ÿä¸åš
+
+front()
+    è¿”å›é˜Ÿå¤´å…ƒç´  å³å½“å‰çª—å£çš„æœ€å¤§å€¼
 */
 
-class MyQueue
-{ // µ¥µ÷¶ÓÁĞ£¨´Ó´óµ½Ğ¡£©
+class MyDeque
+{
 public:
-    std::deque<int> que; // Ê¹ÓÃdequeÀ´ÊµÏÖµ¥µ÷¶ÓÁĞ
-    // Ã¿´Îµ¯³öµÄÊ±ºò£¬±È½Ïµ±Ç°Òªµ¯³öµÄÊıÖµÊÇ·ñµÈÓÚ¶ÓÁĞ³ö¿ÚÔªËØµÄÊıÖµ£¬Èç¹ûÏàµÈÔòµ¯³ö¡£
-    // Í¬Ê±popÖ®Ç°ÅĞ¶Ï¶ÓÁĞµ±Ç°ÊÇ·ñÎª¿Õ¡£
-    void pop(int value)
+    MyDeque()
     {
-        if (!que.empty() && value == que.front())
-        {
-            que.pop_front();
-        }
     }
-    // Èç¹ûpushµÄÊıÖµ´óÓÚÈë¿ÚÔªËØµÄÊıÖµ£¬ÄÇÃ´¾Í½«¶ÓÁĞºó¶ËµÄÊıÖµµ¯³ö£¬Ö±µ½pushµÄÊıÖµĞ¡ÓÚµÈÓÚ¶ÓÁĞÈë¿ÚÔªËØµÄÊıÖµÎªÖ¹¡£
-    // ÕâÑù¾Í±£³ÖÁË¶ÓÁĞÀïµÄÊıÖµÊÇµ¥µ÷´Ó´óµ½Ğ¡µÄÁË¡£
+
+    ~MyDeque()
+    {
+    }
+
     void push(int value)
     {
-        while (!que.empty() && value > que.back())
+        while (!due.empty() && value > due.back())
         {
-            que.pop_back();
+            due.pop_back();
         }
-        que.push_back(value);
+        due.push_back(value);
     }
-    // ²éÑ¯µ±Ç°¶ÓÁĞÀïµÄ×î´óÖµ Ö±½Ó·µ»Ø¶ÓÁĞÇ°¶ËÒ²¾ÍÊÇfront¾Í¿ÉÒÔÁË¡£
+
+    void pop(int value)
+    {
+        if (!due.empty() && value == due.front())
+        {
+            due.pop_front();
+        }
+    }
+
     int front()
     {
-        return que.front();
+        return due.front();
     }
+
+private:
+    std::deque<int> due;
 };
+
 std::vector<int> maxSlidingWindow(std::vector<int> &nums, int k)
 {
-    MyQueue que;
+    MyDeque md;
     std::vector<int> result;
     for (int i = 0; i < k; i++)
-    { // ÏÈ½«Ç°kµÄÔªËØ·Å½ø¶ÓÁĞ
-        que.push(nums[i]);
-    }
-    result.push_back(que.front()); // result ¼ÇÂ¼Ç°kµÄÔªËØµÄ×î´óÖµ
-    for (int i = k; i < nums.size(); i++)
     {
-        que.pop(nums[i - k]);          // »¬¶¯´°¿ÚÒÆ³ı×îÇ°ÃæÔªËØ
-        que.push(nums[i]);             // »¬¶¯´°¿ÚÇ°¼ÓÈë×îºóÃæµÄÔªËØ
-        result.push_back(que.front()); // ¼ÇÂ¼¶ÔÓ¦µÄ×î´óÖµ
+        md.push(nums[i]);
+    }
+    result.push_back(md.front());
+    for(int i = k;i<nums.size();i++)
+    {
+        md.pop(nums[i-k]);
+        md.push(nums[i]);
+        result.push_back(md.front());
     }
     printVec(result);
     return result;
 }
-
 
 int main()
 {
