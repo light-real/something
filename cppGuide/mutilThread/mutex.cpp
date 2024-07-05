@@ -1,6 +1,6 @@
-// ¶ÁÏß³ÌÊıÁ¿
+// ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½ï¿½
 #define READER_THREAD_COUNT 8
-// ×î´óÑ­»·´ÎÊı
+// ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define LOOP_COUNT 5000000
 
 #include <iostream>
@@ -14,33 +14,33 @@ public:
     shared_mutex_counter() = default;
     ~shared_mutex_counter() = default;
 
-    // Ê¹ÓÃstd::shared_mutex£¬Í¬Ò»Ê±¿Ì¶à¸ö¶ÁÏß³Ì¿ÉÒÔÍ¬Ê±·ÃÎÊvalue_Öµ
+    // Ê¹ï¿½ï¿½std::shared_mutexï¿½ï¿½Í¬Ò»Ê±ï¿½Ì¶ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì¿ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½value_Öµ
     unsigned int get() const
     {
-        // ×¢Òâ£ºÕâÀïÊ¹ÓÃstd::shared_lock
+        // ×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½std::shared_lock
         std::shared_lock<std::shared_mutex> lock(mutex_);
         return value_;
     }
 
-    // Ê¹ÓÃstd::shared_mutex£¬Í¬Ò»¸öÊ±¿Ì½öÓĞÒ»¸öĞ´Ïß³Ì¿ÉÒÔĞŞ¸Ävalue_Öµ
+    // Ê¹ï¿½ï¿½std::shared_mutexï¿½ï¿½Í¬Ò»ï¿½ï¿½Ê±ï¿½Ì½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ğ´ï¿½ß³Ì¿ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½value_Öµ
     void increment()
     {
-        // ×¢Òâ£ºÕâÀïÊ¹ÓÃstd::unique_lock
+        // ×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½std::unique_lock
         std::unique_lock<std::shared_mutex> lock(mutex_);
         value_++;
     }
 
-    // Ê¹ÓÃstd::shared_mutex£¬Í¬Ò»¸öÊ±¿Ì½öÓĞÒ»¸öĞ´Ïß³Ì¿ÉÒÔÖØÖÃvalue_Öµ
+    // Ê¹ï¿½ï¿½std::shared_mutexï¿½ï¿½Í¬Ò»ï¿½ï¿½Ê±ï¿½Ì½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ğ´ï¿½ß³Ì¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½value_Öµ
     void reset()
     {
-        // ×¢Òâ£ºÕâÀïÊ¹ÓÃstd::unique_lock
+        // ×¢ï¿½â£ºï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½std::unique_lock
         std::unique_lock<std::shared_mutex> lock(mutex_);
         value_ = 0;
     }
 
 private:
     mutable std::shared_mutex mutex_;
-    // value_ÊÇ¶à¸öÏß³ÌµÄ¹²Ïí×ÊÔ´
+    // value_ï¿½Ç¶ï¿½ï¿½ï¿½ß³ÌµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
     unsigned int value_ = 0;
 };
 
@@ -50,14 +50,14 @@ public:
     mutex_counter() = default;
     ~mutex_counter() = default;
 
-    // Ê¹ÓÃstd::mutex£¬Í¬Ò»Ê±¿Ì½öÓĞÒ»¸öÏß³Ì¿ÉÒÔ·ÃÎÊvalue_µÄÖµ
+    // Ê¹ï¿½ï¿½std::mutexï¿½ï¿½Í¬Ò»Ê±ï¿½Ì½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³Ì¿ï¿½ï¿½Ô·ï¿½ï¿½ï¿½value_ï¿½ï¿½Öµ
     unsigned int get() const
     {
         std::unique_lock<std::mutex> lk(mutex_);
         return value_;
     }
 
-    // Ê¹ÓÃstd::mutex£¬Í¬Ò»Ê±¿Ì½öÓĞÒ»¸öÏß³Ì¿ÉÒÔĞŞ¸Ävalue_µÄÖµ
+    // Ê¹ï¿½ï¿½std::mutexï¿½ï¿½Í¬Ò»Ê±ï¿½Ì½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³Ì¿ï¿½ï¿½ï¿½ï¿½Ş¸ï¿½value_ï¿½ï¿½Öµ
     void increment()
     {
         std::unique_lock<std::mutex> lk(mutex_);
@@ -66,18 +66,18 @@ public:
 
 private:
     mutable std::mutex mutex_;
-    // value_ÊÇ¶à¸öÏß³ÌµÄ¹²Ïí×ÊÔ´
+    // value_ï¿½Ç¶ï¿½ï¿½ï¿½ß³ÌµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
     unsigned int value_ = 0;
 };
 
-// ²âÊÔstd::shared_mutex
+// ï¿½ï¿½ï¿½ï¿½std::shared_mutex
 void test_shared_mutex()
 {
     shared_mutex_counter counter;
     int temp;
 
-    // Ğ´Ïß³Ìº¯Êı
-    auto writer = [&counter](./)
+    // Ğ´ï¿½ß³Ìºï¿½ï¿½ï¿½
+    auto writer = [&counter]()
     {
         for (int i = 0; i < LOOP_COUNT; i++)
         {
@@ -85,8 +85,8 @@ void test_shared_mutex()
         }
     };
 
-    // ¶ÁÏß³Ìº¯Êı
-    auto reader = [&counter, &temp](./)
+    // ï¿½ï¿½ï¿½ß³Ìºï¿½ï¿½ï¿½
+    auto reader = [&counter, &temp]()
     {
         for (int i = 0; i < LOOP_COUNT; i++)
         {
@@ -94,19 +94,19 @@ void test_shared_mutex()
         }
     };
 
-    // ´æ·Å¶ÁÏß³Ì¶ÔÏóÖ¸ÕëµÄÊı×é
+    // ï¿½ï¿½Å¶ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     std::thread **tarray = new std::thread *[READER_THREAD_COUNT];
 
-    // ¼ÇÂ¼ÆğÊ¼Ê±¼ä
+    // ï¿½ï¿½Â¼ï¿½ï¿½Ê¼Ê±ï¿½ï¿½
     clock_t start = clock();
 
-    // ´´½¨READER_THREAD_COUNT¸ö¶ÁÏß³Ì
+    // ï¿½ï¿½ï¿½ï¿½READER_THREAD_COUNTï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     for (int i = 0; i < READER_THREAD_COUNT; i++)
     {
         tarray[i] = new std::thread(reader);
     }
 
-    // ´´½¨Ò»¸öĞ´Ïß³Ì
+    // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ğ´ï¿½ß³ï¿½
     std::thread tw(writer);
 
     for (int i = 0; i < READER_THREAD_COUNT; i++)
@@ -115,22 +115,22 @@ void test_shared_mutex()
     }
     tw.join();
 
-    // ¼ÇÂ¼ÆğÊ¼Ê±¼ä
+    // ï¿½ï¿½Â¼ï¿½ï¿½Ê¼Ê±ï¿½ï¿½
     clock_t end = clock();
     printf("[test_shared_mutex]\n");
     printf("thread count: %d\n", READER_THREAD_COUNT);
-    printf("result: %d cost: %dms temp: %d \n", counter.get(), end - start, temp);
+    printf("result: %d cost: %ldms temp: %d \n", counter.get(), end - start, temp);
 }
 
-// ²âÊÔstd::mutex
+// ï¿½ï¿½ï¿½ï¿½std::mutex
 void test_mutex()
 {
     mutex_counter counter;
 
     int temp;
 
-    // Ğ´Ïß³Ìº¯Êı
-    auto writer = [&counter](./)
+    // Ğ´ï¿½ß³Ìºï¿½ï¿½ï¿½
+    auto writer = [&counter]()
     {
         for (int i = 0; i < LOOP_COUNT; i++)
         {
@@ -138,8 +138,8 @@ void test_mutex()
         }
     };
 
-    // ¶ÁÏß³Ìº¯Êı
-    auto reader = [&counter, &temp](./)
+    // ï¿½ï¿½ï¿½ß³Ìºï¿½ï¿½ï¿½
+    auto reader = [&counter, &temp]()
     {
         for (int i = 0; i < LOOP_COUNT; i++)
         {
@@ -147,19 +147,19 @@ void test_mutex()
         }
     };
 
-    // ´æ·Å¶ÁÏß³Ì¶ÔÏóÖ¸ÕëµÄÊı×é
+    // ï¿½ï¿½Å¶ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     std::thread **tarray = new std::thread *[READER_THREAD_COUNT];
 
-    // ¼ÇÂ¼ÆğÊ¼Ê±¼ä
+    // ï¿½ï¿½Â¼ï¿½ï¿½Ê¼Ê±ï¿½ï¿½
     clock_t start = clock();
 
-    // ´´½¨READER_THREAD_COUNT¸ö¶ÁÏß³Ì
+    // ï¿½ï¿½ï¿½ï¿½READER_THREAD_COUNTï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     for (int i = 0; i < READER_THREAD_COUNT; i++)
     {
         tarray[i] = new std::thread(reader);
     }
 
-    // ´´½¨Ò»¸öĞ´Ïß³Ì
+    // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ğ´ï¿½ß³ï¿½
     std::thread tw(writer);
 
     for (int i = 0; i < READER_THREAD_COUNT; i++)
@@ -168,17 +168,17 @@ void test_mutex()
     }
     tw.join();
 
-    // ¼ÇÂ¼½áÊøÊ±¼ä
+    // ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
     clock_t end = clock();
     printf("[test_mutex]\n");
     printf("thread count:%d\n", READER_THREAD_COUNT);
-    printf("result:%d cost:%dms temp:%d \n", counter.get(), end - start, temp);
+    printf("result:%d cost:%ldms temp:%d \n", counter.get(), end - start, temp);
 }
 
 int main()
 {
-    // ÎªÁËÅÅ³ı²âÊÔ³ÌĞòµÄÎŞ¹ØÒòËØ£¬²âÊÔÊ±Ö»¿ªÆôÒ»¸ö
-    test_mutex();
-    // test_shared_mutex();
+    // Îªï¿½ï¿½ï¿½Å³ï¿½ï¿½ï¿½ï¿½Ô³ï¿½ï¿½ï¿½ï¿½ï¿½Ş¹ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
+    // test_mutex();
+    test_shared_mutex();
     return 0;
 }
