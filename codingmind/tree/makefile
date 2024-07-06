@@ -1,7 +1,7 @@
-all:recursive_traversal
+all:traversal
 
-recursive_traversal:recursive_traversal.cpp
-	g++ -std=c++11 -o recursive_traversal recursive_traversal.cpp
+traversal:traversal.cpp
+	g++ -std=c++11 -o traversal traversal.cpp
 
 clean:
-	rm -rf recursive_traversal
+	rm -rf traversal

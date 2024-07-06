@@ -7,7 +7,10 @@ int main()
     TreeNode *head = TreeNodeInit();
     // recursive_Preorder_traversal(head,show);  //先序遍历
     // recursive_Inorder_traversal(head,show);   //中序遍历
-    recursive_Postorder_traversal(head, show); // 后续遍历
-    printVec(show);
+    // recursive_Postorder_traversal(head, show); // 后续遍历
+    // Preorder_traversal(head);
+    // Inorder_traversal(head);
+    PostOrder_traversal(head);
+    // printVec(show);
     return 0;
 }
