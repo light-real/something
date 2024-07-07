@@ -10,7 +10,11 @@ int main()
     // recursive_Postorder_traversal(head, show); // ºóĞø±éÀú
     // Preorder_traversal(head);
     // Inorder_traversal(head);
-    PostOrder_traversal(head);
+    // PostOrder_traversal(head);
+    // levelOrder(head);
+    // levelOrderBottom(head);
+    // rightSideView(head);
+    averageOfLevels(head);
     // printVec(show);
     return 0;
 }
