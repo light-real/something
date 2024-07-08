@@ -11,10 +11,10 @@ int main()
     // Preorder_traversal(head);
     // Inorder_traversal(head);
     // PostOrder_traversal(head);
-    // levelOrder(head);
+    levelOrder(head);
     // levelOrderBottom(head);
     // rightSideView(head);
-    averageOfLevels(head);
+    // averageOfLevels(head);
     // printVec(show);
     return 0;
 }
