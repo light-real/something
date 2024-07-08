@@ -1,4 +1,4 @@
-all:traversal largestValues averageOfLevels rightSideView
+all:traversal largestValues averageOfLevels rightSideView connect
 
 traversal:traversal.cpp
 	g++ -std=c++11 -o traversal traversal.cpp
@@ -11,5 +11,8 @@ averageOfLevels:averageOfLevels.cpp
 
 rightSideView:rightSideView.cpp
 	g++ -std=c++11 -o rightSideView rightSideView.cpp
+
+connect:connect.cpp
+	g++ -std=c++11 -o connect connect.cpp
 clean:
-	rm -rf traversal largestValues averageOfLevels rightSideView
+	rm -rf traversal largestValues averageOfLevels rightSideView connect
