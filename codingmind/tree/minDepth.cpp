@@ -6,11 +6,11 @@
 
 int minDepth(TreeNode* head)
 {
-    int Depth = 0;
+    int Depth = 1;
     std::queue<TreeNode*> que;
     if(!head)
     {
-        return Depth;
+        return 0;
     }
     que.push(head);
     while(!que.empty())
