@@ -1,4 +1,4 @@
-all:traversal largestValues averageOfLevels rightSideView connect
+all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth
 
 traversal:traversal.cpp
 	g++ -std=c++11 -o traversal traversal.cpp
@@ -14,5 +14,11 @@ rightSideView:rightSideView.cpp
 
 connect:connect.cpp
 	g++ -std=c++11 -o connect connect.cpp
+
+maxDepth:maxDepth.cpp
+	g++ -std=c++11 -o maxDepth maxDepth.cpp
+
+minDepth:minDepth.cpp
+	g++ -std=c++11 -o minDepth minDepth.cpp
 clean:
-	rm -rf traversal largestValues averageOfLevels rightSideView connect
+	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth

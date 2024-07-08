@@ -43,6 +43,14 @@ TreeNode *TreeNodeInit()
     node4->left = node6;
     node4->right = node7;
 
+/*
+                    1
+            2               3
+        4      5                6
+            7       8
+
+*/
+
     return head;
 }
 
@@ -167,6 +175,7 @@ std::vector<int> PostOrder_traversal(TreeNode *head)
 // 按照节点层次返回
 std::vector<std::vector<int>> levelOrder(TreeNode *head)
 {
+    TreeNode* virtualNode = new TreeNode(-1);
     std::vector<std::vector<int>> result;
     if (!head)
     {
@@ -183,13 +192,25 @@ std::vector<std::vector<int>> levelOrder(TreeNode *head)
             TreeNode *node = que.front();
             que.pop();
             vec.push_back(node->val_);
+            if(node == virtualNode)
+            {
+                continue;
+            }
             if (node->left)
             {
                 que.push(node->left);
             }
+            else
+            {
+                que.push(virtualNode);
+            }
             if (node->right)
             {
                 que.push(node->right);
+            }
+            else
+            {
+                que.push(virtualNode);
             }
         }
         result.push_back(vec);
