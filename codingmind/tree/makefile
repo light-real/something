@@ -1,4 +1,4 @@
-all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth
+all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree
 
 traversal:traversal.cpp
 	g++ -std=c++11 -o traversal traversal.cpp
@@ -20,5 +20,8 @@ maxDepth:maxDepth.cpp
 
 minDepth:minDepth.cpp
 	g++ -std=c++11 -o minDepth minDepth.cpp
+
+invertTree:invertTree.cpp
+	g++ -std=c++11 -o invertTree invertTree.cpp
 clean:
-	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth
+	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree
