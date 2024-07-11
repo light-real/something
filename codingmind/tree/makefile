@@ -1,4 +1,4 @@
-all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree
+all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric
 
 traversal:traversal.cpp
 	g++ -std=c++11 -o traversal traversal.cpp
@@ -23,5 +23,8 @@ minDepth:minDepth.cpp
 
 invertTree:invertTree.cpp
 	g++ -std=c++11 -o invertTree invertTree.cpp
+
+isSymmetric:isSymmetric.cpp
+	g++ -std=c++11 -o isSymmetric isSymmetric.cpp
 clean:
-	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree
+	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric
