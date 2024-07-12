@@ -31,7 +31,7 @@ bool isSymmetric_badAnswer(TreeNode *head)
         {
             return false;
         }
-        //加入的顺序需要规定一下
+        // 加入的顺序需要规定一下
         que.push(node1->left);
         que.push(node2->right);
         que.push(node1->right);
@@ -74,11 +74,11 @@ bool recursive_isSymmetric(TreeNode *head) // 递归方法
     return compare(head->left, head->right);
 }
 
-
-
 int main()
 {
-    TreeNode *head = TreeNodeInit();
+    std::vector<int> values = {1, 2, 2, 3, 4, 4, 1};
+
+    TreeNode *head = TreeNodeInitWithVector(values);
     levelOrder(head);
     std::cout << "--------我是分割线------" << std::endl;
     std::cout << recursive_isSymmetric(head) << std::endl;
