@@ -87,7 +87,7 @@ void recursive_Postorder_traversal(TreeNode *node, std::vector<int> &show)
     show.push_back(node->val_);
 }
 
-std::vector<int> Preorder_traversal(TreeNode *head) // ·ÇµÝ¹éÏÈÐò±éÀú
+std::vector<int> Preorder_traversal(TreeNode *head) // ï¿½ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 
     std::vector<int> result;
@@ -115,7 +115,7 @@ std::vector<int> Preorder_traversal(TreeNode *head) // ·ÇµÝ¹éÏÈÐò±éÀú
     return result;
 }
 
-std::vector<int> Inorder_traversal(TreeNode *head) // ·ÇµÝ¹éÖÐÐò±éÀú
+std::vector<int> Inorder_traversal(TreeNode *head) // ï¿½ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
     std::vector<int> result;
     if (!head)
@@ -129,7 +129,7 @@ std::vector<int> Inorder_traversal(TreeNode *head) // ·ÇµÝ¹éÖÐÐò±éÀú
         if (node)
         {
             sta.push(node);
-            node = node->left; // ×ó
+            node = node->left; // ï¿½ï¿½
         }
         else
         {
@@ -171,8 +171,8 @@ std::vector<int> PostOrder_traversal(TreeNode *head)
     return result;
 }
 
-// ²ã´Î±éÀú
-// °´ÕÕ½Úµã²ã´Î·µ»Ø
+// ï¿½ï¿½Î±ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½Õ½Úµï¿½ï¿½Î·ï¿½ï¿½ï¿½
 std::vector<std::vector<int>> levelOrder(TreeNode *head)
 {
     TreeNode* virtualNode = new TreeNode(-1);
@@ -219,7 +219,7 @@ std::vector<std::vector<int>> levelOrder(TreeNode *head)
     return result;
 }
 
-// ²ã´Î±éÀú ×Ôµ×ÏòÏÂ
+// ï¿½ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½
 std::vector<std::vector<int>> levelOrderBottom(TreeNode *head)
 {
     std::vector<std::vector<int>> result;
