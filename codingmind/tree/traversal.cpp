@@ -5,9 +5,9 @@ int main()
 {
     std::vector<int> show;
     TreeNode *head = TreeNodeInit();
-    // recursive_Preorder_traversal(head,show);  //ÏÈÐò±éÀú
-    // recursive_Inorder_traversal(head,show);   //ÖÐÐò±éÀú
-    // recursive_Postorder_traversal(head, show); // ºóÐø±éÀú
+    // recursive_Preorder_traversal(head,show);  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    // recursive_Inorder_traversal(head,show);   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    // recursive_Postorder_traversal(head, show); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     // Preorder_traversal(head);
     // Inorder_traversal(head);
     // PostOrder_traversal(head);
