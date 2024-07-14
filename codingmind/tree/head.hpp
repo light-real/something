@@ -43,14 +43,45 @@ TreeNode *TreeNodeInit()
     node4->left = node6;
     node4->right = node7;
 
-/*
-                    1
-            2               3
-        4      5                6
-            7      8
+    /*
+                        1
+                2               3
+            4      5                6
+                7      8
 
-*/
+    */
 
+    return head;
+}
+
+TreeNode *TreeNodeInitWithVector(const std::vector<int> &vec)
+{
+    if (vec.empty())
+    {
+        return nullptr;
+    }
+    std::queue<TreeNode *> que;
+    TreeNode *head = new TreeNode(vec[0]);
+    que.push(head);
+
+    int i = 1;
+    while (i < vec.size())
+    {
+        TreeNode *current = que.front();
+        que.pop();
+
+        if (i < vec.size())
+        {
+            current->left = new TreeNode(vec[i++]);
+            que.push(current->left);
+        }
+
+        if (i < vec.size())
+        {
+            current->right = new TreeNode(vec[i++]);
+            que.push(current->right);
+        }
+    }
     return head;
 }
 
@@ -87,7 +118,7 @@ void recursive_Postorder_traversal(TreeNode *node, std::vector<int> &show)
     show.push_back(node->val_);
 }
 
-std::vector<int> Preorder_traversal(TreeNode *head) // ·ÇµÝ¹éÏÈÐò±éÀú
+std::vector<int> Preorder_traversal(TreeNode *head) // ï¿½ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 
     std::vector<int> result;
@@ -115,7 +146,7 @@ std::vector<int> Preorder_traversal(TreeNode *head) // ·ÇµÝ¹éÏÈÐò±éÀú
     return result;
 }
 
-std::vector<int> Inorder_traversal(TreeNode *head) // ·ÇµÝ¹éÖÐÐò±éÀú
+std::vector<int> Inorder_traversal(TreeNode *head) // ï¿½ÇµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
     std::vector<int> result;
     if (!head)
@@ -129,7 +160,7 @@ std::vector<int> Inorder_traversal(TreeNode *head) // ·ÇµÝ¹éÖÐÐò±éÀú
         if (node)
         {
             sta.push(node);
-            node = node->left; // ×ó
+            node = node->left; // ï¿½ï¿½
         }
         else
         {
@@ -171,11 +202,11 @@ std::vector<int> PostOrder_traversal(TreeNode *head)
     return result;
 }
 
-// ²ã´Î±éÀú
-// °´ÕÕ½Úµã²ã´Î·µ»Ø
+// ï¿½ï¿½Î±ï¿½ï¿½ï¿½
+// ï¿½ï¿½ï¿½Õ½Úµï¿½ï¿½Î·ï¿½ï¿½ï¿½
 std::vector<std::vector<int>> levelOrder(TreeNode *head)
 {
-    TreeNode* virtualNode = new TreeNode(-1);
+    TreeNode *virtualNode = new TreeNode(-1);
     std::vector<std::vector<int>> result;
     if (!head)
     {
@@ -192,7 +223,7 @@ std::vector<std::vector<int>> levelOrder(TreeNode *head)
             TreeNode *node = que.front();
             que.pop();
             vec.push_back(node->val_);
-            if(node == virtualNode)
+            if (node == virtualNode)
             {
                 continue;
             }
@@ -219,7 +250,7 @@ std::vector<std::vector<int>> levelOrder(TreeNode *head)
     return result;
 }
 
-// ²ã´Î±éÀú ×Ôµ×ÏòÏÂ
+// ï¿½ï¿½Î±ï¿½ï¿½ï¿½ ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½
 std::vector<std::vector<int>> levelOrderBottom(TreeNode *head)
 {
     std::vector<std::vector<int>> result;
@@ -253,8 +284,3 @@ std::vector<std::vector<int>> levelOrderBottom(TreeNode *head)
     printTwoVec(result);
     return result;
 }
-
-
-
-
-

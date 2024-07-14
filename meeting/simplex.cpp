@@ -60,7 +60,7 @@ public:
         }
 
         for (int j = 0; j < n; ++j) {
-            tableau[m][j] = -c[j];
+            tableau[m][j] = -c[j];  // 将目标函数取负，求解最小化问题
         }
 
         basis.resize(m);
@@ -103,31 +103,24 @@ public:
             if (basis[i] < n) solution[basis[i]] = tableau[i][n];
         }
 
-        return tableau[m][n];
+        return -tableau[m][n];  // 返回最小化目标函数的结果
     }
 };
 
-
-/*
-maximize    10x1 + 12x2
-subject to  2x1 + x2  <= 20
-            x1 + 2x2  <= 20
-            x1 - x2   <= 10
-            x1, x2 >= 0
-*/
 int main() {
     vector<vector<double>> A = {
-        {2, 1},
-        {1, 2},
-        {1, -1}
+        {1, 1, 1},
+        {1, 0, 0},
+        {0, 0, 1},
+        {0, 3, 1}
     };
-    vector<double> b = {20, 20, 10};
-    vector<double> c = {10, 12};
+    vector<double> b = {4, 2, 3, 6};
+    vector<double> c = {1, 14, 6};
 
     Simplex simplex(A, b, c);
     try {
-        double max_value = simplex.solve();
-        cout << "Optimal value: " << max_value << endl;
+        double min_value = simplex.solve();
+        cout << "Optimal value: " << min_value << endl;
     } catch (const char *msg) {
         cerr << msg << endl;
     }
