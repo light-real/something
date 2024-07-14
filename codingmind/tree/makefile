@@ -1,4 +1,4 @@
-all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum
+all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum isBanlanced pathofTree sumOfLeftLeaves findBottomLeftValue hasPathSum
 
 traversal:traversal.cpp
 	g++ -std=c++11 -o traversal traversal.cpp
@@ -29,5 +29,20 @@ isSymmetric:isSymmetric.cpp
 
 getNodesNum:getNodesNum.cpp
 	g++ -std=c++11 -o getNodesNum getNodesNum.cpp
+
+isBanlanced:isBanlanced.cpp
+	g++ -std=c++11 -o isBanlanced isBanlanced.cpp
+
+pathofTree:pathofTree.cpp
+	g++ -std=c++11 -o pathofTree pathofTree.cpp
+
+sumOfLeftLeaves:sumOfLeftLeaves.cpp
+	g++ -std=c++11 -o sumOfLeftLeaves sumOfLeftLeaves.cpp
+
+findBottomLeftValue:findBottomLeftValue.cpp
+	g++ -std=c++11 -o findBottomLeftValue findBottomLeftValue.cpp
+
+hasPathSum:hasPathSum.cpp
+	g++ -std=c++11 -o hasPathSum hasPathSum.cpp
 clean:
-	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum
+	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum isBanlanced pathofTree sumOfLeftLeaves findBottomLeftValue hasPathSum

@@ -56,27 +56,27 @@ TreeNode *TreeNodeInit()
 
 TreeNode *TreeNodeInitWithVector(const std::vector<int> &vec)
 {
-    if(vec.empty())
+    if (vec.empty())
     {
         return nullptr;
     }
     std::queue<TreeNode *> que;
-    TreeNode* head = new TreeNode(vec[0]);
+    TreeNode *head = new TreeNode(vec[0]);
     que.push(head);
-    
+
     int i = 1;
-    while(i < vec.size())
+    while (i < vec.size())
     {
-        TreeNode* current = que.front();
+        TreeNode *current = que.front();
         que.pop();
-        
-        if(i < vec.size())
+
+        if (i < vec.size())
         {
             current->left = new TreeNode(vec[i++]);
             que.push(current->left);
         }
 
-        if(i < vec.size())
+        if (i < vec.size())
         {
             current->right = new TreeNode(vec[i++]);
             que.push(current->right);
