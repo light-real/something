@@ -10,7 +10,7 @@ bool hasPathSum(TreeNode *root, int targetSum)
 {
     if (root == nullptr)
         return false;
-    std::stack<std::pair<TreeNode *, int>> st; // 用pair去记录 第一个元素为当前节点的值 第二个元素为当前节点路径和
+    std::stack<std::pair<TreeNode *, int>> st; // 用pair去记录 第一个元素为当前节点 第二个元素为当前节点路径和
     st.push(std::pair<TreeNode *, int>(root, root->val_));
     while (!st.empty())
     {
