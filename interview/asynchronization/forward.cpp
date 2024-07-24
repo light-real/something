@@ -21,7 +21,7 @@ void process(int &&x)
 }
 
 template <typename T>
-void forwarder(T &&arg)
+void forwarder(T &&arg) // T&&表示万能引用（universal reference），可以绑定到左值和右值
 {
     process(std::forward<T>(arg));
 }
