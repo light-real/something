@@ -61,5 +61,6 @@
         "cstring": "cpp",
         "set": "cpp",
         "future": "cpp"
-    }
+    },
+    "search.useIgnoreFiles": false
 }
