@@ -1,4 +1,4 @@
-all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum isBanlanced pathofTree sumOfLeftLeaves findBottomLeftValue hasPathSum
+all:traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum isBanlanced pathofTree sumOfLeftLeaves findBottomLeftValue hasPathSum buildTreeWithInorderPostorder buildTreeWithPreorderInorder constructMaximumBinaryTree mergeTrees
 
 traversal:traversal.cpp
 	g++ -std=c++11 -o traversal traversal.cpp
@@ -44,5 +44,17 @@ findBottomLeftValue:findBottomLeftValue.cpp
 
 hasPathSum:hasPathSum.cpp
 	g++ -std=c++11 -o hasPathSum hasPathSum.cpp
+
+buildTreeWithInorderPostorder:buildTreeWithInorderPostorder.cpp
+	g++ -std=c++11 -o buildTreeWithInorderPostorder buildTreeWithInorderPostorder.cpp
+
+buildTreeWithPreorderInorder:buildTreeWithPreorderInorder.cpp
+	g++ -std=c++11 -o buildTreeWithPreorderInorder buildTreeWithPreorderInorder.cpp
+
+constructMaximumBinaryTree:constructMaximumBinaryTree.cpp
+	g++ -std=c++11 -o constructMaximumBinaryTree constructMaximumBinaryTree.cpp
+
+mergeTrees:mergeTrees.cpp
+	g++ -std=c++11 -o mergeTrees mergeTrees.cpp
 clean:
-	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum isBanlanced pathofTree sumOfLeftLeaves findBottomLeftValue hasPathSum
+	rm -rf traversal largestValues averageOfLevels rightSideView connect maxDepth minDepth invertTree isSymmetric getNodesNum isBanlanced pathofTree sumOfLeftLeaves findBottomLeftValue hasPathSum buildTreeWithInorderPostorder buildTreeWithPreorderInorder constructMaximumBinaryTree mergeTrees
