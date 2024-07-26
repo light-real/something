@@ -45,11 +45,11 @@ public:
     ~MyDB();
     // 连接mysql
     bool initDB(std::string host, std::string user, std::string pwd, std::string db_name);
-    bool exeSQL(std::string sql); // 执行sql语句
+    bool exeSQL(std::string sql, std::string& getValue); // 执行sql语句
 private:
     MYSQL *mysql;      // 连接mysql句柄指针
     MYSQL_RES *result; // 指向查询结果的指针
-    MYSQL_ROW *row;    // 按行返回的查询信息
+    MYSQL_ROW row;     // 按行返回的查询信息
 };
 
 #endif

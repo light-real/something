@@ -1,5 +1,5 @@
 #include "copyOnWrite.h"
-
+#include "MyDB.h"
 std::mutex mmtx;
 
 MarketingData init()
@@ -23,7 +23,7 @@ void workThread(const MarketingData &md) // 工作线程用于读取数据
     }
 }
 
-void backGroundThread(MarketingData &md,const std::string& str,const std::vector<std::pair<time_t,int64_t>>& vec) // 背景线程用于写线程
+void backGroundThread(MarketingData &md, const std::string &str, const std::vector<std::pair<time_t, int64_t>> &vec) // 背景线程用于写线程
 {
     md.insertData(str, vec);
     {
@@ -47,22 +47,34 @@ void callThread(MarketingData &md)
         thread.join();
     }
 
-    int backgroundThreadNums = 5; //创建五个线程写
+    int backgroundThreadNums = 5; // 创建五个线程写
     std::string str = "huya";
-    std::vector<std::pair<time_t,int64_t>> vec = {{2019,99}};
-    std::thread backgroundThread01(backGroundThread,std::ref(md),str,vec);
+    std::vector<std::pair<time_t, int64_t>> vec = {{2019, 99}};
+    std::thread backgroundThread01(backGroundThread, std::ref(md), str, vec);
     backgroundThread01.join();
 }
+
+
 
 int main()
 {
     MarketingData md = init(); // 不能使用默认的拷贝构造和移动构造函数 因为mtx和smtx无法被复制
-    callThread(md);
-    md.printData();
+    // callThread(md);
+    // md.printData();
+    MyDB Mdb;
+    std::string host = "localhost";
+    std::string user = "newuser";
+    std::string pwd = "demo";
+    std::string db_name = "MarketingData";
+    Mdb.initDB(host, user, pwd, db_name);
+
+    std::string getValue;
+    Mdb.exeSQL("SELECT * from company",getValue);
+    std::cout<<"getValue = "<<getValue<<std::endl;
     return 0;
 }
 
-//todo 加入线程池进行优化 
-//todo 连接数据库
-//todo 加入网络模块 能够将数据从数据库中读取并且发出
-//todo IO多路复用
+// todo 加入线程池进行优化 
+// todo 连接数据库 MarketingData --{company,shares}
+// todo 加入网络模块 能够将数据从数据库中读取并且发出
+// todo IO多路复用
