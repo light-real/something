@@ -78,4 +78,6 @@ bool MyDB::exeSQL(std::string sql,std::string& getValue)
 
 
 
+
+
 // g++ -std=c++11 -o MyDB MyDB.cpp `mysql_config --cflags --libs`
