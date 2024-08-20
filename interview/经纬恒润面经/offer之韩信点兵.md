@@ -144,3 +144,14 @@ void vectorIter()
 
 }
 ```
+
+## 5、容器是线程安全的吗？
+[容器是否线程安全](https://blog.csdn.net/weixin_42195477/article/details/130718214?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522172407719316800222828377%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=172407719316800222828377&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~rank_v31_ecpm-1-130718214-null-null.142^v100^pc_search_result_base8&utm_term=%E5%AE%B9%E5%99%A8%E6%98%AF%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84%E5%90%97%EF%BC%9F&spm=1018.2226.3001.4187)
+
+## 6、C++多态
+[C++多态理解](https://blog.csdn.net/zhang_si_hang/article/details/126173598?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522172413490516800178586694%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=172413490516800178586694&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-126173598-null-null.142^v100^pc_search_result_base8&utm_term=C%2B%2B%E5%A4%9A%E6%80%81&spm=1018.2226.3001.4187)
+
+多态是在不同继承关系的类对象，去调用同一函数，产生了不同的行为。比如 Student 继承了 Person。 Person 对象买票全价， Student 对象买票半价\
+### 多态两个要求：
+ 1、被调用的函数必须是虚函数，子类对父类的虚函数进行重写 （重写：三同（函数名/参数/返回值）+虚函数）\
+ 2、父类指针或者引用去调用虚函数。
