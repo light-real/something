@@ -45,5 +45,7 @@ int main()
     {
         sum++;
     }
+    char str = 'A';
+    std::cout<<"string = "<< tolower(str)<<std::endl;
     return 0;
 }
