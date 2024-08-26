@@ -20,16 +20,14 @@ string numToBinary(long long k)
     return ans;
 }
 
-
-
 // 计算二进制数的价值
 int caculate(string &str, int x)
 {
-    if(x > str.size())
+    if (x > str.size())
     {
         return 0;
     }
-    reverse(str.begin(),str.end());
+    reverse(str.begin(), str.end());
     // int ans = (x == 1 ? (str[0] - '0') : 0);
     int ans = 0;
 
@@ -39,7 +37,7 @@ int caculate(string &str, int x)
     {
         if (i == times)
         {
-            ans += (str[i-1] - '0');
+            ans += (str[i - 1] - '0');
             times += x;
             i = times;
         }
@@ -53,10 +51,10 @@ int caculate(string &str, int x)
 
 void testCaculate(long long k)
 {
-    for(int i = 0;i < k;i++)
+    for (int i = 0; i < k; i++)
     {
         string temp = numToBinary(i);
-        cout<<"numToBinary = "<<temp<<"     price = "<<caculate(temp,1)<<endl;
+        cout << "numToBinary = " << temp << "     price = " << caculate(temp, 1) << endl;
     }
 }
 
@@ -72,12 +70,65 @@ long long findMaximumNumber(long long k, int x)
         // cout<<"sumPrice = "<<sumPrice<<endl;
         previousPrice = i;
     }
-    return previousPrice-1;
+    return previousPrice - 1;
+}
+
+string convert(string s, int numRows)
+{
+    int n = s.size();
+    cout<<"n = "<<n<<endl;
+    int coloum = (n / (numRows-1));
+    cout<<"coloum = "<<coloum<<endl;
+    vector<vector<char>> vec(numRows, vector<char>(coloum));
+    int index = 0; // 用于指示字符串的下标
+    int row = 0;
+    int col = 0;
+    bool flag = false; // 用于指示当前是否斜着走
+    while (index < n)
+    {
+        if (col == 0 || !flag)
+        {
+            while (row != numRows)
+            {
+                vec[row][col] = s[index];
+                row++;
+                index++;
+            }
+            flag = true; // 指示当前需要斜着走
+            row--;
+        }
+        if (flag)
+        {
+            row--;
+            col++;
+            vec[row][col] = s[index];
+            index++;
+            if (row == 0)
+            {
+                flag = false;
+                row = 1;
+            }
+        }
+    }
+    for (auto au : vec)
+    {
+        for (auto a : au)
+        {
+            cout << a << "  ";
+        }
+        cout << endl;
+    }
+    return s;
 }
 
 int main()
 {
-    cout<<findMaximumNumber(3278539330613, 5)<<endl;
-    // testCaculate(10);
+    // cout<<findMaximumNumber(3278539330613, 5)<<endl;
+    // vector<vector<char>> vec(4, vector<char>(3));
+    string str = "PAYPALISHIRING";
+    
+    convert(str, 3);
+
     return 0;
 }
+// g++ -std=c++11 -o test test.cpp

@@ -52,6 +52,7 @@ deque由多个连续的内存块组成，内存不足时，不需要将原来的
 ### 举例说明
 
 **`unordered_set` 示例**:
+
 ```cpp
 #include <iostream>
 #include <unordered_set>
@@ -78,6 +79,7 @@ int main() {
 ```
 
 **`unordered_map` 示例**:
+
 ```cpp
 #include <iostream>
 #include <unordered_map>
@@ -115,13 +117,15 @@ https://blog.csdn.net/weixin_57097753/article/details/140593398?ops_request_misc
 删除元素后，更新迭代器，erase返回删除后的下一个迭代器
 
 ## 4、在遍历中如何保持迭代器有效？
+
 https://blog.csdn.net/GreedySnaker/article/details/114967640?ops_request_misc=&request_id=&biz_id=102&utm_term=%E5%9C%A8%E9%81%8D%E5%8E%86%E4%B8%AD%E5%A6%82%E4%BD%95%E4%BF%9D%E6%8C%81%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%9C%89%E6%95%88%EF%BC%9F&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-114967640.142^v100^pc_search_result_base8&spm=1018.2226.3001.4187
 
 erase(*it )的返回值是下一个有效迭代器的值 直接``it = erase(**it)``即可令it指向迭代器的下一个位置
+
 ```c++
 void vectorIter()
 {
-	vector<int> vec;
+    vector<int> vec;
 	for (int i = 0; i < 10; i++)
 	{
 		vec.push_back(i);//0，1，2，3，4，5，6，7，8，9
