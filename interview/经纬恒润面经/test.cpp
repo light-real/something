@@ -2,6 +2,9 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <unordered_map>
+#include <map>
+#include <cctype>
 
 using namespace std;
 
@@ -121,14 +124,13 @@ string convert(string s, int numRows)
     return s;
 }
 
+
+
 int main()
 {
-    // cout<<findMaximumNumber(3278539330613, 5)<<endl;
-    // vector<vector<char>> vec(4, vector<char>(3));
-    string str = "PAYPALISHIRING";
-    
-    convert(str, 3);
-
+    char str = '1';
+    int x = isalnum(str);
+    cout<<"x = "<<x<<endl;
     return 0;
 }
 // g++ -std=c++11 -o test test.cpp
