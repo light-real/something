@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <unordered_map>
 #include <map>
+#include <sstream>
 #include <cctype>
 
 using namespace std;
@@ -79,9 +80,9 @@ long long findMaximumNumber(long long k, int x)
 string convert(string s, int numRows)
 {
     int n = s.size();
-    cout<<"n = "<<n<<endl;
-    int coloum = (n / (numRows-1));
-    cout<<"coloum = "<<coloum<<endl;
+    cout << "n = " << n << endl;
+    int coloum = (n / (numRows - 1));
+    cout << "coloum = " << coloum << endl;
     vector<vector<char>> vec(numRows, vector<char>(coloum));
     int index = 0; // 用于指示字符串的下标
     int row = 0;
@@ -124,13 +125,105 @@ string convert(string s, int numRows)
     return s;
 }
 
+bool isValidSudoku(vector<vector<char>> &board)
+{
+    // 一个vector 记录当前行是否出现过重复的数字
+    vector<int> repeat(10, 1);
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            if (board[i][j] == '.')
+            {
+                continue;
+            }
+            if (repeat[board[i][j] - '0'] == 1) // 判断行是否有重复
+            {
+                repeat[board[i][j] - '0']++;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        repeat.assign(repeat.size(), 1); // 重新恢复
+    }
 
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            if (board[j][i] == '.')
+                continue;
+            if (repeat[board[j][i] - '0'] == 1)
+            {
+                repeat[board[j][i] - '0']++;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        repeat.assign(repeat.size(), 1);
+    }
+    // 这时候repeat数组已经恢复了
+    int i = 0;
+    int j = 0;
+    while (1)
+    {
+        if (board[i][j] == '.')
+        {
+            j++;
+        }
+        else if (repeat[board[i][j] - '0'] == 1)
+        {
+            repeat[board[i][j] - '0']++;
+            j++;
+        }
+        else
+        {
+            return false;
+        }
+        if (i == 8 && j == 8)
+        {
+            break;
+        }
+        if (j == 8 && (i + 1) % 3 == 0)
+        {
+            i++;
+            j = 0;
+            repeat.assign(repeat.size(), 1);
+        }
+        if ((i + 1) % 3 == 0 && (j + 1) % 3 == 0)
+        {
+            i -= 2;
+            j++;
+            repeat.assign(repeat.size(), 1);
+        }
+        if ((j + 1) % 3 == 0)
+        {
+            i++;
+            j -= 2;
+        }
+    }
+    return true;
+}
 
 int main()
 {
-    char str = '1';
-    int x = isalnum(str);
-    cout<<"x = "<<x<<endl;
+    string s = "dog is my dog";
+    istringstream iss(s);
+    string tmp;
+    vector<string> vec;
+    while(iss >> tmp)
+    {
+        vec.push_back(tmp);
+    }
+    for(auto c:vec)
+    {
+        cout<<c<<"";
+    }
+    cout<<endl;
     return 0;
 }
 // g++ -std=c++11 -o test test.cpp
