@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../../file/interview/leetcode"
 		}
 	],
 	"settings": {
