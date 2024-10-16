@@ -1,4 +1,5 @@
 // 网络通讯的客户端程序
+#include <iostream>
 #include <cstdlib>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +10,6 @@
 #include <arpa/inet.h>
 #include <time.h>
 #include <sys/types.h>
-
 
 /*
 整个客户端：做好IP相关的信息，输入IP地址和端口号，连接服务器，发送消息

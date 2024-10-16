@@ -28,9 +28,9 @@ int createtimerfd(int sec = 30)
 
 // 在构造函数中创建Epoll对象ep_
 EventLoop::EventLoop(bool mainloop, int timetvl, int timeout) : ep_(new Epoll), mainloop_(mainloop),
-                    timetvl_(timetvl), timeout_(timeout), stop_(false), wakeupfd_(eventfd(0, EFD_NONBLOCK)),
-                    wakechannel_(new Channel(this, wakeupfd_)), timerfd_(createtimerfd(timeout_)),
-                    timerchannel_(new Channel(this, timerfd_))
+                                                                timetvl_(timetvl), timeout_(timeout), stop_(false), wakeupfd_(eventfd(0, EFD_NONBLOCK)),
+                                                                wakechannel_(new Channel(this, wakeupfd_)), timerfd_(createtimerfd(timeout_)),
+                                                                timerchannel_(new Channel(this, timerfd_))
 {
     wakechannel_->setreadcallback(std::bind(&EventLoop::handlewakeup, this));
     wakechannel_->enablereading();

@@ -85,6 +85,12 @@ void Channel::handleevent() // 事件处理函数 epoll_wait()返回的时候 执行它
     {
         closecallback_(); // 回调Connnection::closecallback();
     }
+    /*
+    EPOLLIN：表示有数据可读（0x001） 0b00000001
+    EPOLLPRI：表示有紧急数据可读（0x002）0b00000010
+    EPOLLOUT：表示可以写数据（0x004）0b00000100
+    EPOLLRDNORM：表示普通读事件（0x040）0b00101000
+    */
     else if (revents_ & (EPOLLIN | EPOLLPRI)) // 接收缓冲区中有数据可以读
     {
         // fd_读事件的回调函数 如果是acceptchannel 将回调Acceptor::newconnection()

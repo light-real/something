@@ -55,6 +55,7 @@ uint16_t Connection::port() const // 返回客户端的port
 
 void Connection::onmessage() // 处理对端发送过来的信息
 {
+    std::cout << "Connection::onmessage()" << std::endl;
     char buffer[1024];
     while (true) // 由于使用非阻塞IO 一次读取buffer大小数据 直到全部的数据读取完毕
     {

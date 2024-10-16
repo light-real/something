@@ -28,7 +28,7 @@ Acceptor::~Acceptor()
 {
 }
 
-void Acceptor::newconnection() // 处理新客户端了解请求
+void Acceptor::newconnection() // 处理新客户端连接请求
 {
     InetAddress clientaddr; // 客户端的地址和协议
     std::unique_ptr<Socket> clientsock(new Socket(servsock_.accept(clientaddr)));

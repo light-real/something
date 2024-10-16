@@ -61,7 +61,7 @@ std::vector<Channel *> Epoll::loop(int timeout) // 运行epoll_wait() 等待事件的发
 {
     std::vector<Channel *> channels;                               // 存放epoll_wait()返回的事件
     bzero(events_, sizeof(events_));                               // 将存放epoll_wait()返回事件的数组初始化 每一次循环都是接收的新的事件
-    int infds = epoll_wait(epollfd_, events_, MaxEvents, timeout); // 等待监视的fd有事件发生
+    int infds = epoll_wait(epollfd_, events_, MaxEvents, timeout); // 等待监视的fd有事件发生 epoll_wait()返回有事件发生的数量
 
     // 返回失败
     if (infds < 0)
@@ -93,6 +93,9 @@ std::vector<Channel *> Epoll::loop(int timeout) // 运行epoll_wait() 等待事件的发
         epoll_data_t data; // User data variable
         }
     __EPOLL_PACKED;
+    读事件：EPOLLIN，其值通常是 0x001。
+    写事件：EPOLLOUT，其值通常是 0x010
+    新的连接对应的事件通常是读事件 会被报告为EPOLLIN 因为新的连接请求首先需要从套接字读取
     */
     // epoll_data是一个联合体union 其中epoll_data中的ptr成员是void*类型，可以转换为其他类型
     for (int i = 0; i < infds; i++)
