@@ -9,6 +9,8 @@
 #include <iomanip>
 #include <cmath>
 #include <stack>
+#include <queue>
+#include <sstream>
 
 void printVec(const std::vector<int> &vec)
 {
